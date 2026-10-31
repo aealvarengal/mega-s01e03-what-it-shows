@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '0002 · Same subject, different cause'
+owner: Alejandro Alvarenga
+status: accepted
+reviewed: 2026-10-31
+signature: Alejandro Alvarenga 2026-10-31
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Date:** 31 October 2026 · **Deciders:** Alejandro Alvarenga (harness-assisted), support desk
+
+## Context
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges two reports into one ticket when
+their subject lines match, on the sound logic that duplicates of the same bug usually share a
+subject. It says nothing about the reverse case: two *different* bugs can also produce reports
+with the same subject line, because people describe symptoms ("wrong day", "date is wrong"), not
+causes.
+
+Ticket #4471 was exactly this. 412 reports, one subject-line cluster, marked "known" as a single
+parser bug. Run through the desk's own cause logic (`src/lib/kb/causes.ts`), it splits cleanly
+into two: `parser` (379 reports) and `hint` (33 reports) — two different components, two
+different fixes, merged into one ticket by decision 0001's own rule.
+
+## Decision
+
+Before a big ticket is marked known, run its reports through the desk's cause-splitting tool
+(`causes.ts`), not just eyes on the subject line. If it reports more than one cause, file one
+ticket per cause, each with its own count — not one ticket for the whole merge.
+
+Filed from this review:
+- [issue #1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1) — the parser
+  bug, 379 reports.
+- [issue #2](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2) — the
+  `booking-v3` hint bug, 33 reports.
+
+See [the full breakdown](/kb/incidents/4471/split).
+
+## Consequences
+
+- Decision 0001 still stands for genuine duplicates. This adds a check in the other direction:
+  same subject is necessary for a merge, not sufficient to assume one cause.
+- A ticket this size needs its cause distribution checked once, before it's marked known — not
+  reopened and resplit later once someone notices the fix didn't close all of it.
+- `causes.ts` already existed to do this check. Running it on every big ticket going forward is
+  a habit, not new tooling.
+
+<RenderStamp {signature} />

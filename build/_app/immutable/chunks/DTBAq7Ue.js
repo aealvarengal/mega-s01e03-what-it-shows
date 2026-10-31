@@ -1,0 +1,14 @@
+import{t as e}from"./DK3Fl9T5.js";import{C as t,N as n,j as r,x as i}from"./iMfXNLlz.js";import"./DnrQqk1w.js";import{t as a}from"./CiRIFPyW.js";var o=e({default:()=>h,metadata:()=>s}),s={layout:`runbook`,title:`0002 · Same subject, different cause`,owner:`Alejandro Alvarenga`,status:`accepted`,reviewed:`2026-10-31T00:00:00.000Z`,signature:`Alejandro Alvarenga 2026-10-31`},{layout:c,title:l,owner:u,status:d,reviewed:f,signature:p}=s,m=t(`<p><strong>Date:</strong> 31 October 2026 · <strong>Deciders:</strong> Alejandro Alvarenga (harness-assisted), support desk</p> <h2>Context</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges two reports into one ticket when
+their subject lines match, on the sound logic that duplicates of the same bug usually share a
+subject. It says nothing about the reverse case: two <em>different</em> bugs can also produce reports
+with the same subject line, because people describe symptoms (“wrong day”, “date is wrong”), not
+causes.</p> <p>Ticket #4471 was exactly this. 412 reports, one subject-line cluster, marked “known” as a single
+parser bug. Run through the desk’s own cause logic (<code>src/lib/kb/causes.ts</code>), it splits cleanly
+into two: <code>parser</code> (379 reports) and <code>hint</code> (33 reports) — two different components, two
+different fixes, merged into one ticket by decision 0001’s own rule.</p> <h2>Decision</h2> <p>Before a big ticket is marked known, run its reports through the desk’s cause-splitting tool
+(<code>causes.ts</code>), not just eyes on the subject line. If it reports more than one cause, file one
+ticket per cause, each with its own count — not one ticket for the whole merge.</p> <p>Filed from this review:</p> <ul><li><a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1" rel="nofollow">issue #1</a> — the parser
+bug, 379 reports.</li> <li><a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2" rel="nofollow">issue #2</a> — the <code>booking-v3</code> hint bug, 33 reports.</li></ul> <p>See <a href="/kb/incidents/4471/split">the full breakdown</a>.</p> <h2>Consequences</h2> <ul><li>Decision 0001 still stands for genuine duplicates. This adds a check in the other direction:
+same subject is necessary for a merge, not sufficient to assume one cause.</li> <li>A ticket this size needs its cause distribution checked once, before it’s marked known — not
+reopened and resplit later once someone notices the fix didn’t close all of it.</li> <li><code>causes.ts</code> already existed to do this check. Running it on every big ticket going forward is
+a habit, not new tooling.</li></ul> <!>`,1);function h(e){var t=m(),o=n(r(t),22);a(o,{get signature(){return p}}),i(e,t)}export{h as n,o as t};

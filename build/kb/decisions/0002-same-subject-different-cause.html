@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="../../_app/immutable/entry/start.Cnbm6UBs.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CRzLMJPS.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/2-QGX4F0.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/iMfXNLlz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/QbZvV2LQ.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.vyxqFtgO.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.CVfXc1X9.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/4.Bzdu8w79.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DTBAq7Ue.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DnrQqk1w.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CiRIFPyW.js" rel="modulepreload">
+		
+		<link href="../../_app/immutable/assets/RenderStamp.WePi3wDe.css" rel="stylesheet">
+</head>
+<body data-sveltekit-preload-data="hover">
+  <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><p><strong>Date:</strong> 31 October 2026 · <strong>Deciders:</strong> Alejandro Alvarenga (harness-assisted), support desk</p> <h2>Context</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges two reports into one ticket when
+their subject lines match, on the sound logic that duplicates of the same bug usually share a
+subject. It says nothing about the reverse case: two <em>different</em> bugs can also produce reports
+with the same subject line, because people describe symptoms (“wrong day”, “date is wrong”), not
+causes.</p> <p>Ticket #4471 was exactly this. 412 reports, one subject-line cluster, marked “known” as a single
+parser bug. Run through the desk’s own cause logic (<code>src/lib/kb/causes.ts</code>), it splits cleanly
+into two: <code>parser</code> (379 reports) and <code>hint</code> (33 reports) — two different components, two
+different fixes, merged into one ticket by decision 0001’s own rule.</p> <h2>Decision</h2> <p>Before a big ticket is marked known, run its reports through the desk’s cause-splitting tool
+(<code>causes.ts</code>), not just eyes on the subject line. If it reports more than one cause, file one
+ticket per cause, each with its own count — not one ticket for the whole merge.</p> <p>Filed from this review:</p> <ul><li><a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1" rel="nofollow">issue #1</a> — the parser
+bug, 379 reports.</li> <li><a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2" rel="nofollow">issue #2</a> — the <code>booking-v3</code> hint bug, 33 reports.</li></ul> <p>See <a href="/kb/incidents/4471/split">the full breakdown</a>.</p> <h2>Consequences</h2> <ul><li>Decision 0001 still stands for genuine duplicates. This adds a check in the other direction:
+same subject is necessary for a merge, not sufficient to assume one cause.</li> <li>A ticket this size needs its cause distribution checked once, before it’s marked known — not
+reopened and resplit later once someone notices the fix didn’t close all of it.</li> <li><code>causes.ts</code> already existed to do this check. Running it on every big ticket going forward is
+a habit, not new tooling.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-DPK6-728N</b></p><!--]--><!----><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_gg0n07 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						version: "1793415036083"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("../../_app/immutable/entry/start.Cnbm6UBs.js").then(async (kit) => {
+						kit.init(__sveltekit_gg0n07);
+						const app = await import("../../_app/immutable/entry/app.vyxqFtgO.js");
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>
