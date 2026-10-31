@@ -53,3 +53,4 @@ Three problems found inside ticket #4471, filed as issues:
 
 signed-closure marker
 parser-fix-marker
+hint-fix-marker
