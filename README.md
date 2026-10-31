@@ -50,3 +50,4 @@ Three problems found inside ticket #4471, filed as issues:
 1. [The parser bug](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1) — 374 reports
 2. [The hint bug](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2) — 33 reports
 3. [The one-day bug](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3) — 5 reports
+
