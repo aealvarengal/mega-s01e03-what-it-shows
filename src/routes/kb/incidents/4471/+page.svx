@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · dates parse mm/dd in eu locales'
 owner: support desk
-status: fixed
+status: known
 reviewed: 2026-10-31
 ---
 
@@ -18,10 +18,10 @@ Since April, people have told us their bookings land on the wrong day: a month f
 **It was never one issue.** [It was two](/kb/incidents/4471/split): the shared parser
 ([#1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1), 379 reports) and a
 separate hint bug on `booking-v3` ([#2](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2),
-33 reports). Both are fixed and closed.
+33 reports). Both are filed. Neither fix has shipped yet.
 
 <Callout>
-Fixed. Two issues, not one — see <a href="/kb/incidents/4471/split">the split</a>.
+Known, correctly this time. Two issues, not one — see <a href="/kb/incidents/4471/split">the split</a>.
 </Callout>
 
 ## What was merged
