@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 was three problems, not one'
+title: '#4471 was two problems, not one'
 owner: support desk
 status: known
 reviewed: 2026-10-31
@@ -17,32 +17,37 @@ signature: Alejandro Alvarenga
 one fix queued. That is true of some of the reports. It is not true of all of them.
 
 <Callout kind="warn">
-#4471 is not one issue. It is three, merged because [decision 0001](/kb/decisions/0001-dedupe-by-subject)
-merges on subject line alone, and all three read the same to a tired desk at 9am.
+#4471 is not one issue. It is two, merged because [decision 0001](/kb/decisions/0001-dedupe-by-subject)
+merges on subject line alone, and both read the same to a tired desk at 9am.
 </Callout>
 
 ## What the table already shows
 
 <CauseTable ticket={4471} />
 
-The table's own footnote — reports "read as a one-day move" — is the tell. A month/day swap
-moves a date by weeks or months. These reports move it by exactly one day. That is not this bug.
+The table shows two automatic causes, `parser` and `hint` — but they are one real problem, not
+two: nothing in this pipeline checks the tenant's actual locale before reading or hinting a date.
+That single defect shows up two ways, by channel. The table's own footnote — reports "read as a
+one-day move" — is the tell for the real second problem: a month/day swap moves a date by weeks
+or months; these reports move it by exactly one day. That is not this bug at all.
 
-## The three problems
+## The two problems
 
-1. **The parser bug.** The shared parser reads `MM/DD` no matter the tenant's locale, and every
-   tenant here writes day-first. **374 reports.** → [issue #1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1)
-2. **The hint bug.** `booking-v3` shows a `MM/DD/YYYY` hint to day-first-locale tenants, so people
-   type month-first on purpose, and the form reads it the tenant's way anyway. Same symptom,
-   different cause, only on `form` submissions from `booking-v3`. **33 reports.** →
-   [issue #2](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2)
-3. **The one-day bug.** Five reports where a date is off by exactly one day — a meeting that
+1. **Date reading isn't locale-aware.** On `app`/`email`/`booking-v2`-`form` traffic, the shared
+   parser reads a correctly-typed date as `MM/DD` regardless of locale, flipping it for day-first
+   tenants (`parser`, 374 reports). On `booking-v3`-`form` traffic, the form's hint tells those
+   same tenants to type `MM/DD/YYYY`, and the form then reads what they typed the tenant's actual
+   day-first way — flipping it for the opposite reason (`hint`, 33 reports). Same defect, two
+   symptoms. **407 reports.** → [issue #1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1)
+2. **The one-day bug.** Five reports where a date is off by exactly one day — a meeting that
    showed one date in Lisbon and another in Toronto, a month where every booking ran a day late
    and only that month, an invite that arrived before the booking it was for. Not a swap. A
    timezone or day-boundary problem, already flagged once in `desk-notes.json` and never split
    out. **5 reports.** → [issue #3](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3)
+   (issue #2 was opened and then folded into #1 once it was clear it was the same defect, not a
+   second one — see the comment on #1.)
 
-374 + 33 + 5 = 412.
+407 + 5 = 412.
 
 ## Why the desk didn't see it
 

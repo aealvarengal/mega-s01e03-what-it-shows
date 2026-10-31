@@ -9,11 +9,11 @@
 		<link href="../../../_app/immutable/chunks/2-QGX4F0.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/iMfXNLlz.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/QbZvV2LQ.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.D_E8iPDJ.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.vDJKA3OW.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.CVfXc1X9.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.CQuFDx2T.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/DS0CYsqe.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.C5N8OSwl.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/hjMnqrp7.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DnrQqk1w.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/C3_7nxss.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/ClAzhcAr.js" rel="modulepreload">
@@ -24,16 +24,22 @@
 </head>
 <body data-sveltekit-preload-data="hover">
   <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><p><a href="/kb/incidents/4471">#4471</a> says one thing: the parser reads dates month first, 412 reports,
-one fix queued. That is true of some of the reports. It is not true of all of them.</p> <aside class="warn svelte-17bri61"><!---->#4471 is not one issue. It is three, merged because [decision 0001](/kb/decisions/0001-dedupe-by-subject)
-merges on subject line alone, and all three read the same to a tired desk at 9am.<!----></aside><!----> <h2>What the table already shows</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table’s own footnote — reports “read as a one-day move” — is the tell. A month/day swap
-moves a date by weeks or months. These reports move it by exactly one day. That is not this bug.</p> <h2>The three problems</h2> <ol><li><strong>The parser bug.</strong> The shared parser reads <code>MM/DD</code> no matter the tenant’s locale, and every
-tenant here writes day-first. <strong>374 reports.</strong> → <a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1" rel="nofollow">issue #1</a></li> <li><strong>The hint bug.</strong> <code>booking-v3</code> shows a <code>MM/DD/YYYY</code> hint to day-first-locale tenants, so people
-type month-first on purpose, and the form reads it the tenant’s way anyway. Same symptom,
-different cause, only on <code>form</code> submissions from <code>booking-v3</code>. <strong>33 reports.</strong> → <a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/2" rel="nofollow">issue #2</a></li> <li><strong>The one-day bug.</strong> Five reports where a date is off by exactly one day — a meeting that
+one fix queued. That is true of some of the reports. It is not true of all of them.</p> <aside class="warn svelte-17bri61"><!---->#4471 is not one issue. It is two, merged because [decision 0001](/kb/decisions/0001-dedupe-by-subject)
+merges on subject line alone, and both read the same to a tired desk at 9am.<!----></aside><!----> <h2>What the table already shows</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table shows two automatic causes, <code>parser</code> and <code>hint</code> — but they are one real problem, not
+two: nothing in this pipeline checks the tenant’s actual locale before reading or hinting a date.
+That single defect shows up two ways, by channel. The table’s own footnote — reports “read as a
+one-day move” — is the tell for the real second problem: a month/day swap moves a date by weeks
+or months; these reports move it by exactly one day. That is not this bug at all.</p> <h2>The two problems</h2> <ol><li><strong>Date reading isn’t locale-aware.</strong> On <code>app</code>/<code>email</code>/<code>booking-v2</code>-<code>form</code> traffic, the shared
+parser reads a correctly-typed date as <code>MM/DD</code> regardless of locale, flipping it for day-first
+tenants (<code>parser</code>, 374 reports). On <code>booking-v3</code>-<code>form</code> traffic, the form’s hint tells those
+same tenants to type <code>MM/DD/YYYY</code>, and the form then reads what they typed the tenant’s actual
+day-first way — flipping it for the opposite reason (<code>hint</code>, 33 reports). Same defect, two
+symptoms. <strong>407 reports.</strong> → <a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1" rel="nofollow">issue #1</a></li> <li><strong>The one-day bug.</strong> Five reports where a date is off by exactly one day — a meeting that
 showed one date in Lisbon and another in Toronto, a month where every booking ran a day late
 and only that month, an invite that arrived before the booking it was for. Not a swap. A
 timezone or day-boundary problem, already flagged once in <code>desk-notes.json</code> and never split
-out. <strong>5 reports.</strong> → <a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3" rel="nofollow">issue #3</a></li></ol> <p>374 + 33 + 5 = 412.</p> <h2>Why the desk didn’t see it</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> is right that merging on subject is fast
+out. <strong>5 reports.</strong> → <a href="https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3" rel="nofollow">issue #3</a> (issue #2 was opened and then folded into #1 once it was clear it was the same defect, not a
+second one — see the comment on #1.)</li></ol> <p>407 + 5 = 412.</p> <h2>Why the desk didn’t see it</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> is right that merging on subject is fast
 and that splitting later is cheaper than two engineers chasing the same bug. It says nothing
 about the other direction: two different bugs can also <em>share</em> a subject line, and merging them
 hides that there were ever two. “Merge when unsure” needs a partner rule: <strong>before you mark a
@@ -46,16 +52,16 @@ at #4471 until now.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref 
 			
 			<script>
 				{
-					__sveltekit_mzh8ba = {
+					__sveltekit_18rikhd = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793411114825"
+						version: "1793411366690"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../../_app/immutable/entry/start.Cnbm6UBs.js").then(async (kit) => {
-						kit.init(__sveltekit_mzh8ba);
-						const app = await import("../../../_app/immutable/entry/app.D_E8iPDJ.js");
+						kit.init(__sveltekit_18rikhd);
+						const app = await import("../../../_app/immutable/entry/app.vDJKA3OW.js");
 						kit.start(app, element, {
 							node_ids: [0, 5],
 							data: [null,null],
