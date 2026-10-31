@@ -35,19 +35,20 @@ or months; these reports move it by exactly one day. That is not this bug at all
 
 1. **Date reading isn't locale-aware.** On `app`/`email`/`booking-v2`-`form` traffic, the shared
    parser reads a correctly-typed date as `MM/DD` regardless of locale, flipping it for day-first
-   tenants (`parser`, 374 reports). On `booking-v3`-`form` traffic, the form's hint tells those
+   tenants (`parser`, 379 reports). On `booking-v3`-`form` traffic, the form's hint tells those
    same tenants to type `MM/DD/YYYY`, and the form then reads what they typed the tenant's actual
    day-first way — flipping it for the opposite reason (`hint`, 33 reports). Same defect, two
-   symptoms. **407 reports.** → [issue #1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1)
-2. **The one-day bug.** Five reports where a date is off by exactly one day — a meeting that
-   showed one date in Lisbon and another in Toronto, a month where every booking ran a day late
-   and only that month, an invite that arrived before the booking it was for. Not a swap. A
-   timezone or day-boundary problem, already flagged once in `desk-notes.json` and never split
-   out. **5 reports.** → [issue #3](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3)
+   symptoms. **412 reports** — the full ticket, counted as the desk's own cause split already has
+   it. → [issue #1](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/1)
+2. **The one-day bug.** Five of those same 412 — flagged by `desk-notes.json` and footnoted on
+   the table above — are off by exactly one day, not a month/day swap: a meeting that showed one
+   date in Lisbon and another in Toronto, a month where every booking ran a day late and only
+   that month, an invite that arrived before the booking it was for. They stay filed under
+   `parser` above (that's where `causeOf()` puts them), but the actual cause is a timezone or
+   day-boundary problem, unrelated to date-order at all. **5 reports**, a subset of the 412, not
+   an addition to it. → [issue #3](https://github.com/aealvarengal/mega-s01e03-what-it-shows/issues/3)
    (issue #2 was opened and then folded into #1 once it was clear it was the same defect, not a
    second one — see the comment on #1.)
-
-407 + 5 = 412.
 
 ## Why the desk didn't see it
 
