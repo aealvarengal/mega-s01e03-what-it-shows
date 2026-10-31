@@ -4,7 +4,7 @@ title: '#4471 was two problems, not one'
 owner: support desk
 status: known
 reviewed: 2026-10-31
-signature: Alejandro Alvarenga 2026-10-31
+signature: v1.eyJzdWIiOiI3MTg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0ODYwMjQsImV4cCI6MTc5MzU3MjQyNH0.FSmUmVbrpNi2j2uZCpcAbE3uMysZ7nudQ55L5b6GDbU
 ---
 
 <script>
